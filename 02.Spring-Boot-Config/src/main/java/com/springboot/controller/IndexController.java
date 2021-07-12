@@ -17,9 +17,14 @@ public class IndexController {
 	private ConfigBean configBean;
 	@Autowired
 	private TestConfigBean testConfigBean;
-	
+
 	@RequestMapping("/")
 	String index() {
 		return testConfigBean.getName()+"，"+testConfigBean.getAge();
+	}
+
+	@RequestMapping("/index2")
+	String index2() {
+		return configBean.getName()+"，"+configBean.getTitle();
 	}
 }

@@ -2,7 +2,7 @@ package com.springboot.bean;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix="mrbird.blog")
+// @ConfigurationProperties(prefix="mrbird.blog")
 public class ConfigBean {
 	private String name;
 	private String title;
@@ -24,6 +24,6 @@ public class ConfigBean {
 	}
 	public void setWholeTitle(String wholeTitle) {
 		this.wholeTitle = wholeTitle;
-	}	
-	
+	}
+
 }
