@@ -23,20 +23,22 @@ import com.jayway.jsonpath.JsonPath;
 
 import demo.springboot.test.domain.User;
 
+import java.nio.charset.StandardCharsets;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserControllerTest {
 
 	private MockMvc mockMvc;
 	private MockHttpSession session;
-	
+
 	@Autowired
     private WebApplicationContext wac;
-	
+
 	@Autowired
 	ObjectMapper mapper;
 
-	
+
 	@Before
     public void setupMockMvc(){
 		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
@@ -44,11 +46,13 @@ public class UserControllerTest {
 		User user =new User();
 		user.setUsername("Dopa");
 		user.setPasswd("ac3af72d9f95161a502fd326865c2f15");
-	    session.setAttribute("user",user); 
+	    session.setAttribute("user",user);
     }
-	
+
 	@Test
 	@Transactional
+	// 此外，和在Controller中引用Service相比，在测试单元中对Service测试完毕后，
+	// 数据能自动回滚，只需要在测试方法上加上@Transactional注解，比如:
 	public void test() throws Exception {
 //		mockMvc.perform(
 //				 MockMvcRequestBuilders.get("/user/{userName}", "scott")
@@ -56,46 +60,55 @@ public class UserControllerTest {
 //		.andExpect(MockMvcResultMatchers.status().isOk())
 //		.andExpect(MockMvcResultMatchers.jsonPath("$.username").value("scott"))
 //		.andDo(MockMvcResultHandlers.print());
-		
+
 //		String jsonStr = "{\"username\":\"Dopa\",\"passwd\":\"ac3af72d9f95161a502fd326865c2f15\",\"status\":\"1\"}";
-		
+
 		User user = new User();
 		user.setUsername("Dopa");
 		user.setPasswd("ac3af72d9f95161a502fd326865c2f15");
 		user.setStatus("1");
-		
+
 		String userJson = mapper.writeValueAsString(user);
-		
-		
+
+
 //		mockMvc.perform(MockMvcRequestBuilders.post("/user/save").content(jsonStr.getBytes()));
-		
+
 		mockMvc.perform(
 				MockMvcRequestBuilders.post("/user/save")
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content(userJson.getBytes()))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andDo(MockMvcResultHandlers.print());
-		
+
 //		mockMvc.perform(MockMvcRequestBuilders.get("/hello?name={name}","mrbird"));
 //		mockMvc.perform(MockMvcRequestBuilders.post("/user/{id}", 1));
-//		mockMvc.perform(MockMvcRequestBuilders.fileUpload("/fileupload").file("file", "文件内容".getBytes("utf-8")));
+// 		mockMvc.perform(MockMvcRequestBuilders.fileUpload("/fileupload").file("file", "文件内容".getBytes(StandardCharsets.UTF_8)));
 //		mockMvc.perform(MockMvcRequestBuilders.get("/hello").param("message", "hello"));
 //		mockMvc.perform(MockMvcRequestBuilders.get("/hobby/save").param("hobby", "sleep", "eat"));
-		
+
+// 		也可以直接使用MultiValueMap构建参数：
 //		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 //		params.add("name", "mrbird");
 //		params.add("hobby", "sleep");
 //		params.add("hobby", "eat");
 //		mockMvc.perform(MockMvcRequestBuilders.get("/hobby/save").params(params));
+
+// 		模拟Session和Cookie：
 //		mockMvc.perform(MockMvcRequestBuilders.get("/index").sessionAttr(name, value));
 //		mockMvc.perform(MockMvcRequestBuilders.get("/index").cookie(new Cookie(name, value)));
+
+// 		设置请求的Content-Type：
 //		mockMvc.perform(MockMvcRequestBuilders.get("/index").contentType(MediaType.APPLICATION_JSON_UTF8));
+
+// 		设置返回格式为JSON：
 //		mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 1).accept(MediaType.APPLICATION_JSON));
+
+// 		模拟HTTP请求头：
 //		mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 1).header(name, values));
-		
+
 //		mockMvc.perform(MockMvcRequestBuilders.get("/index"))
 //		.andDo(MockMvcResultHandlers.print());
-		
+
 
 	}
 }

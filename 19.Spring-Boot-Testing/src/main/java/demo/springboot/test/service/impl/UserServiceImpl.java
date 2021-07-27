@@ -2,6 +2,7 @@ package demo.springboot.test.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +26,9 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 	@Override
 	public void saveUser(User user) {
-		user.setId(this.getSequence("seq_user"));
+		// user.setId(this.getSequence("seq_user"));
+		long i = new Random().nextInt(10000);
+		user.setId(i);
 		user.setCreateTime(new Date());
 		this.save(user);
 	}
