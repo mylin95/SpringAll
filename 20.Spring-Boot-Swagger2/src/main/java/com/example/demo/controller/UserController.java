@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import springfox.documentation.annotations.ApiIgnore;
 
-@Api(value = "用户Controller")
+@Api(tags = "用户Controller-t", description = "用户Controller-d")
 @Controller
 @RequestMapping("user")
 public class UserController {
