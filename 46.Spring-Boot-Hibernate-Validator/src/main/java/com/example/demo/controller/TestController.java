@@ -11,6 +11,9 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * @author MrBird
+ * @description
+ *      1. @Validated：对一般入参添加注解，实体类 上需要加入该注解
+ *      2. 对实体类的注解，必须单独加上 @Valid 或者 @Validated
  */
 @RestController
 @Validated
@@ -23,6 +26,11 @@ public class TestController {
         return "success";
     }
 
+    /**
+     * 对实体类的注解，必须单独加上 @Valid 或者 @Validated
+     * @param user
+     * @return
+     */
     @GetMapping("test2")
     public String test2(@Valid User user) {
         return "success";

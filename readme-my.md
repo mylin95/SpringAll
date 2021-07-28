@@ -19,8 +19,9 @@
     - Spring Boot自动装配：
         - 注解：@Enable + @Import + @ConditionalOnProperty + @Configuration + @Bean + resources\META-INF\spring.factories配置扫描配置文件
         - 类文件：HelloWorldAutoConfiguration.java + EnableHelloWorld.java + HelloWorldConfiguration.java + resources\META-INF\spring.factories配置扫描配置文件
-- 45.[Spring Boot Application](https://mrbird.cc/deepin-springboot-application.html):
+- 45.[Spring-Boot-Application](https://mrbird.cc/deepin-springboot-application.html):
     - 加载顺序：加载应用上下文初始器[initializer] -> 加载应用事件监听器[listener] -> 启动类[runner]
     - SpringApplicationRunListener： **可以监听Spring生命周期**
-- 
+- 46.[Spring-Boot-Hibernate-Validator](https://mrbird.cc/Spring-Boot-Hibernate-Validator-Params-Check.html):
+    - SpringBoot的Controller类中，对接口的参数校验【一般参数校验】、【实体类参数校验】、【全局异常处理】
      
