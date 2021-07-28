@@ -24,4 +24,50 @@
     - SpringApplicationRunListener： **可以监听Spring生命周期**
 - 46.[Spring-Boot-Hibernate-Validator](https://mrbird.cc/Spring-Boot-Hibernate-Validator-Params-Check.html):
     - SpringBoot的Controller类中，对接口的参数校验【一般参数校验】、【实体类参数校验】、【全局异常处理】
-     
+- 49.[Spring-Boot-Async](https://mrbird.cc/Spring-Boot-Async.html)
+    - 自定义异步线程池
+        ```java
+        @Configuration
+        public class AsyncPoolConfig {
+        
+            @Bean
+            public ThreadPoolTaskExecutor asyncThreadPoolTaskExecutor(){
+                ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+                executor.setCorePoolSize(20);
+                executor.setMaxPoolSize(200);
+                executor.setQueueCapacity(25);
+                executor.setKeepAliveSeconds(200);
+                executor.setThreadNamePrefix("asyncThread");
+                executor.setWaitForTasksToCompleteOnShutdown(true);
+                executor.setAwaitTerminationSeconds(60);
+        
+                executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        
+                executor.initialize();
+                return executor;
+            }
+        }
+        
+        @Service
+        public class TestService {
+        
+            @Async("asyncThreadPoolTaskExecutor")
+            public void asyncMethod() {
+               
+            }
+        
+            @Async("asyncThreadPoolTaskExecutor")
+            public Future<String> asyncMethod() {
+                sleep();
+                logger.info("异步方法内部线程名称：{}", Thread.currentThread().getName());
+                return new AsyncResult<>("hello async");
+            }
+        
+        }
+        
+        
+        ```     
+    - 通过返回结果我们可以看出Future的get方法为阻塞方法，只有当异步方法返回内容了，程序才会继续往下执行。
+    
+    
+    

@@ -15,7 +15,13 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class TestService {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Async("asyncThreadPoolTaskExecutor")
+    public void asyncVoidMethod() {
+        sleep();
+        logger.info("异步方法内部线程名称：{}", Thread.currentThread().getName());
+    }
 
     @Async("asyncThreadPoolTaskExecutor")
     // @Async
