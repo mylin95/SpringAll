@@ -6,6 +6,7 @@ import org.springframework.core.Ordered;
 
 /**
  * @author MrBird
+ * @description 加载应用上下文初始器
  */
 public class AfterHelloApplicationContextInitializer
         implements ApplicationContextInitializer, Ordered {

@@ -7,6 +7,7 @@ import org.springframework.core.annotation.Order;
 
 /**
  * @author MrBird
+ * @description 加载应用上下文初始器
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class HelloApplicationContextInitializer
