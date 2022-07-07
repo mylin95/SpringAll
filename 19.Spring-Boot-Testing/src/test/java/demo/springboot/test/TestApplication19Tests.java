@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TestApplicationTests {
+public class TestApplication19Tests {
 
     @BeforeClass
     public static void beforeClassTest() {

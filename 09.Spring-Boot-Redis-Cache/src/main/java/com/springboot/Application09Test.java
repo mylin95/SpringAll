@@ -4,19 +4,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cache.CacheManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.springboot.bean.Student;
 import com.springboot.service.StudentService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Application.class)
-public class ApplicationTest {
+@SpringBootTest(classes = Application09.class)
+public class Application09Test {
 
 	@Autowired
 	private StudentService studentService;
-	
 
 	@Test
     public void test1() throws Exception {
@@ -29,7 +27,6 @@ public class ApplicationTest {
 	
 	@Test
 	public void test2() throws Exception {
-		
 		Student student1 = this.studentService.queryStudentBySno("001");
 		System.out.println("学号" + student1.getSno() + "的学生姓名为：" + student1.getName());
 

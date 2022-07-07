@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @SpringBootApplication
-public class DemoApplication {
+public class DemoApplication18 {
 
 	public static void main(String[] args) throws JsonProcessingException, IOException {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(DemoApplication18.class, args);
 
 	}
 }

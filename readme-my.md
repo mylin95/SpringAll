@@ -8,6 +8,18 @@
 - 17.Spring-Boot-Shiro-Session
 
 ### 笔记
+- 18.Spring-Boot-Jackson
+    - 此Jackson插件在项目中的用法：
+    - 类似FastJson插件作用
+    - 很多注解使用，可以结合spring映射字段
+- 19.Spring-Boot-Testing
+    - 两种test，一种是直接test
+    - 另一种：模拟发送http请求（mvc）    
+- 20.Spring-Boot-Swagger2
+    - swagger-ui的配置类
+- 21.Spring-Boot-Actuator
+    - 各种应用监控数据，可以通过浏览器GET请求查看
+        
 - 26.Spring-Boot-Filter-Interceptor执行顺序
     - filter -> interceptor -> controllerAdvice -> Aspect -> Controller
     - 图片![img](https://mrbird.cc/img/32361-20180530095349427-444141538.png)

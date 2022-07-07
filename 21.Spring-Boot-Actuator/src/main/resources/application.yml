@@ -9,5 +9,5 @@ management:
 endpoints:
   shutdown:
     enabled: true
-  beans:
-    id: instances
+#  beans:
+#    id: instances
